@@ -6,8 +6,8 @@ process_names=("yunshu-daemon" "yunshu-updater" "yunshu-cross" "screenshot_serv"
 # 获取当前时间戳
 start_time=$(date +%s)
 
-# 设置默认统计时间为180s
-if [[ -z "$1" ]]; then
+# 当$1为空或非数字时，设置默认统计时间为180s
+if [[ -z "$1" || ! "$1" =~ ^[0-9]+$ ]]; then
     interval=180
 else
     interval="$1"
