@@ -6,8 +6,15 @@ process_names=("yunshu-daemon" "yunshu-updater" "yunshu-cross" "screenshot_serv"
 # 获取当前时间戳
 start_time=$(date +%s)
 
+# 设置默认统计时间为180s
+if [[ -z "$1" ]]; then
+    interval=180
+else
+    interval="$1"
+fi
+
 # 计算一小时后的时间戳
-end_time=$((start_time + 300))
+end_time=$((start_time + $interval))
 
 # 创建数据文件保存内存占用数据
 output_file="memory_usage.dat"
